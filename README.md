@@ -31,15 +31,15 @@ Here are some screenshots of the Leave Management App:
 
 ### Login Page
 ![Dashboard](src/assets/images/screenshots/loginPage.png)
-*Form to login into the app.*
+                *Form to login into the app.*
 
 ### Leave Request Form
 ![Leave Request Form](src/assets/images/screenshots/addAbsencePage.png)
-*Form for submitting new leave requests.*
+                *Form for submitting new leave requests.*
 
 ### Calendar Overview
 ![Team Overview](src/assets/images/screenshots/calendarPage.png)
-*View of the team's leave schedules on a calendar.*
+                *View of the team's leave schedules on a calendar.*
 
 ## Technologies Used
 <div style="display: flex; gap: 20px; flex-wrap: wrap;">
