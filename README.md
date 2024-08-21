@@ -58,7 +58,7 @@ To set up the project locally, follow these steps:
   ```
 
   4. Set Up Environment Variables:
-  Create a environment.ts file in the root directory and add the necessary environment variables. An example environment.ts file:
+  Create an environment.ts file in the root directory and add the necessary environment variables. An example environment.ts file:
   ```
   export const environment = {
   url: your_base_api_url,
