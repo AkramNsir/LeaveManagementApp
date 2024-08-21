@@ -1,0 +1,62 @@
+<h1 class="title">Calendar</h1>
+<p *ngIf="isLoading" class="loading-title">Loading...</p>
+<div *ngIf="!isLoading" class="scheduler-container">
+  <dx-scheduler
+  [dataSource]="dataSource"
+  (onAppointmentRendered)="onAppointmentRendered($event)"
+  currentView="month"
+  [currentDate]="currentDate"
+  [height]="500"
+  [maxAppointmentsPerCell]="1"> 
+  <dxi-view type="week" [startDayHour]="8" [endDayHour]="18"></dxi-view>
+  <dxi-view type="workWeek" [startDayHour]="8" [endDayHour]="18"></dxi-view>
+  <dxi-view type="month"></dxi-view>
+
+  <dxo-editing
+  [allowAdding]="false"
+  [allowDeleting]="false"
+  [allowUpdating]="false"
+  [allowResizing]="false"
+  [allowDragging]="false"
+></dxo-editing>
+</dx-scheduler>
+
+<div class="palette-container">
+  <div class="piece-container">
+    <div class="color-container" style="background-color: #94D1E4;"></div>
+    <p>Urlaub</p>
+  </div>
+  <div class="piece-container">
+    <div class="color-container" style="background-color: #A0E4B6;"></div>
+    <p>Krank</p>
+  </div>
+  <div class="piece-container">
+    <div class="color-container" style="background-color: #FF9999;"></div>
+    <p>Zeitausgleich</p>
+  </div>
+  <div class="piece-container">
+    <div class="color-container" style="background-color: #F7F39E;"></div>
+    <p>Berufsschule</p>
+  </div>
+  <div class="piece-container">
+    <div class="color-container" style="background-color: #BFA4E6;"></div>
+    <p>Bildungsurlaub</p>
+  </div>
+  <div class="piece-container">
+    <div class="color-container" style="background-color: #D2B08D;"></div>
+    <p>Sonderurlaub</p>
+  </div>
+  <div class="piece-container">
+    <div class="color-container" style="background-color: #FFB84D;"></div>
+    <p>Mutterschutz</p>
+  </div>
+  <div class="piece-container">
+    <div class="color-container" style="background-color: #8BA9B3;"></div>
+    <p>Elternzeit</p>
+  </div>
+  <div class="piece-container">
+    <div class="color-container" style="background-color: #B6C030;"></div>
+    <p>Krank (Kind)</p>
+  </div>
+</div>
+</div>

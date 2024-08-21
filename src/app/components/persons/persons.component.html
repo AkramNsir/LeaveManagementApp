@@ -1,0 +1,197 @@
+<div class="team-container">
+  <h1 class="title">Team</h1>
+  <dx-text-box
+    [(value)]="searchValue"
+    placeholder="Search..."
+    class="search-box"
+    (valueChange)="filterPersons()">
+  </dx-text-box>
+
+    <dx-speed-dial-action 
+      *ngIf='isAdmin'
+      icon="add"
+      text="Add"
+      hint="Add new person"
+      class="add-button"
+      (onClick)="openAddPersonPopup()">
+    </dx-speed-dial-action>    
+
+    <dx-list
+  *ngIf="persons && persons.length"
+  [dataSource]="filteredPersons"
+  [hoverStateEnabled]="false"
+  [activeStateEnabled]="false"
+  [focusStateEnabled]="false"
+  class="list-container"
+>
+  <div class="person-container" *dxTemplate="let person of 'item'">
+    <img src="../../../assets/images/profile.jpg" alt="${person.FirstName} image">
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+      <div class="info_container">
+        <span  style="font-weight: 600;"> First Name: {{ person.FirstName }}</span>
+        <span style="font-weight: 500;">Last Name : {{ person.LastName }}</span>
+        <span>Position : {{ person.Position }}</span>
+      </div>
+      <div *ngIf='isAdmin' class="edit-delete">
+        <dx-button 
+          icon="edit" 
+          hint="Edit" 
+          (onClick)="openEditPersonPopup(person)"
+          stylingMode="text">
+        </dx-button>
+        <dx-button 
+          icon="trash" 
+          hint="Delete" 
+          (onClick)="openDeletePersonPopup(person)"
+          stylingMode="text">
+        </dx-button>
+      </div>
+    </div>
+  </div>
+</dx-list>
+<p *ngIf="message" class="loading-title">{{ message }}</p>
+
+
+<dx-popup
+    [visible]="popupAddVisible"
+    [showTitle]="true"
+    title="Add New Person"
+    [dragEnabled]="true"
+    [hideOnOutsideClick]="true"
+    (onHiding)="closeAddPersonPopup()">
+    <div style="margin: auto;" *dxTemplate="let data of 'content'">
+      <div class="add-popUp">
+
+        <div class="form-group">
+          <label for="firstName">First Name : </label>
+          <dx-text-box
+            id="firstName"
+            [(value)]="newPerson.FirstName"
+            placeholder="Enter First name">
+
+            <dx-validator>
+              <dxi-validation-rule type="required" message="First Name is required"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+        </div>
+
+        <div class="form-group">
+          <label for="firstName">Last Name : </label>
+          <dx-text-box
+            id="lastName"
+            [(value)]="newPerson.LastName"
+            placeholder="Enter Last name">
+
+            <dx-validator>
+              <dxi-validation-rule type="required" message="Last Name is required"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+        </div>
+
+        <div class="form-group">
+          <label for="position">Position : </label>
+          <dx-select-box
+            id="position"
+            [dataSource]="positions"
+            displayExpr="Description"
+            valueExpr="Value"
+            [(value)]="newPerson.Position"
+            placeholder="Select..."
+            [searchEnabled]="true"
+            [dropDownOptions]="{ maxHeight: '200px'}">>
+
+            <dx-validator>
+              <dxi-validation-rule type="required" message="Position is required"></dxi-validation-rule>
+            </dx-validator>
+          </dx-select-box>
+        </div>
+
+        <div class="buttons-container">
+          <dx-button text="Add" (onClick)="add()"></dx-button>
+          <dx-button text="Cancel" (onClick)="closeAddPersonPopup()"></dx-button>
+        </div>      
+      </div>
+    </div>
+  </dx-popup>
+
+  <dx-popup
+    [visible]="popupEditVisible"
+    [showTitle]="true"
+    title="Edit Person"
+    [dragEnabled]="true"
+    [hideOnOutsideClick]="true"
+    (onHiding)="closeEditPersonPopup()">
+    <div style="margin: auto;" *dxTemplate="let data of 'content'">
+      <div class="add-popUp">
+        
+        <div class="form-group">
+          <label for="firstName">First Name : </label>
+          <dx-text-box
+            id="firstName"
+            [(value)]="currentPerson.FirstName"
+            placeholder="Enter First name">
+
+            <dx-validator>
+              <dxi-validation-rule type="required" message="First Name is required"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+        </div>
+
+        <div class="form-group">
+          <label for="firstName">Last Name : </label>
+          <dx-text-box
+            id="lastName"
+            [(value)]="currentPerson.LastName"
+            placeholder="Enter Last name">
+
+            <dx-validator>
+              <dxi-validation-rule type="required" message="Last Name is required"></dxi-validation-rule>
+            </dx-validator>
+          </dx-text-box>
+        </div>
+
+        <div class="form-group">
+          <label for="position">Position : </label>
+          <dx-select-box
+            id="position"
+            [dataSource]="positions"
+            displayExpr="Description"
+            valueExpr="Value"
+            [(value)]="currentPerson.Position"
+            placeholder="Select..."
+            [searchEnabled]="true"
+            [dropDownOptions]="{ maxHeight: '200px'}">
+
+            <dx-validator>
+              <dxi-validation-rule type="required" message="Position is required"></dxi-validation-rule>
+            </dx-validator>
+          </dx-select-box>
+        </div>
+
+        <div class="buttons-container">
+          <dx-button text="Save" (onClick)="edit()"></dx-button>
+          <dx-button text="Cancel" (onClick)="closeEditPersonPopup()"></dx-button>
+        </div>      
+      </div>
+    </div>
+  </dx-popup>
+  <dx-popup
+    [visible]="popupDeleteVisible"
+    [showTitle]="true"
+    title="Delete Person"
+    [width]='"35vw"'
+    [height]='"30vh"'
+    [dragEnabled]="true"
+    [hideOnOutsideClick]="true"
+    (onHiding)="closeDeletePersonPopup()">
+    <div *dxTemplate="let data of 'content'">
+      <div>
+        <p style="text-align: center;">Are you sure you want to delete this record ?</p>           
+        <div class="buttons-container" style="margin-top: 30px; justify-content: center;">
+          <dx-button text="Yes" (onClick)="delete()"></dx-button>
+          <dx-button text="No" (onClick)="closeDeletePersonPopup()"></dx-button>
+        </div>      
+      </div>
+    </div>
+  </dx-popup>
+</div> 

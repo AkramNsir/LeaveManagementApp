@@ -1,0 +1,151 @@
+<div class="container" [ngClass]="{ active: isToggled }">
+  <div class="form-container sign-up">
+    <dx-form class="dx-form-custom" [formData]="formDataLogin">
+      <dxi-item itemType="group" caption="">
+        <dxi-item ><h1>Sign Up</h1></dxi-item>
+
+        <dxi-item
+          dataField="name"
+          editorType="dxTextBox"
+          [editorOptions]="{ placeholder: 'Name', mode: 'text' }"
+        >
+          <dxo-label [visible]="false"></dxo-label>
+          <dxi-validation-rule
+            type="required"
+            message="Name is required"
+          ></dxi-validation-rule>
+        </dxi-item>
+
+
+        <dxi-item
+          dataField="email"
+          editorType="dxTextBox"
+          [editorOptions]="{ placeholder: 'Email', mode: 'Email' }"
+        >
+          <dxo-label [visible]="false"></dxo-label>
+          <dxi-validation-rule
+            type="required"
+            message="Email is required"
+          ></dxi-validation-rule>
+        </dxi-item>
+
+
+        <dxi-item
+          dataField="password"
+          editorType="dxTextBox"
+          [editorOptions]="{ placeholder: 'Password', mode: 'password' }"
+        >
+          <dxo-label [visible]="false"></dxo-label>
+          <dxi-validation-rule
+            type="required"
+            message="Password is required"
+          ></dxi-validation-rule>
+        </dxi-item>
+
+
+        <dxi-item
+          dataField="confirmPassword"
+          editorType="dxTextBox"
+          [editorOptions]="{ placeholder: 'Confirm Password', mode: 'password' }"
+        >
+          <dxo-label [visible]="false"></dxo-label>
+          <dxi-validation-rule
+            type="required"
+            message="Confirm Password is required"
+          ></dxi-validation-rule>
+        </dxi-item>
+
+      </dxi-item>
+      <dxi-item style="text-align: center;">
+        <dx-button
+          class="custom-button"
+          text="Sign Up"
+          (click)="register()"
+        ></dx-button>
+      </dxi-item>
+    </dx-form>
+  </div>
+
+
+
+
+
+
+
+  <div class="form-container sign-in">
+    <dx-form class="dx-form-custom" [formData]="formDataRegister">
+      <dxi-item itemType="group">
+        <dxi-item ><h1>Sign In</h1></dxi-item>
+
+        <dxi-item
+          dataField="email"
+          editorType="dxTextBox"
+          [editorOptions]="{ placeholder: 'Email', mode: 'Email' }"
+        >
+          <dxo-label [visible]="false"></dxo-label>
+          <dxi-validation-rule
+            type="required"
+            message="Email is required"
+          ></dxi-validation-rule>
+        </dxi-item>
+        
+        <dxi-item
+          dataField="password"
+          editorType="dxTextBox"
+          [editorOptions]="{ placeholder: 'Password', mode: 'password' }"
+        >
+          <dxo-label [visible]="false"></dxo-label>
+          <dxi-validation-rule
+            type="required"
+            message="Password is required"
+          ></dxi-validation-rule>
+        </dxi-item>
+        <!-- <dxi-item>
+          <div style="text-align: center;">
+            <a href="#" class="custom-link" >Forgot your password?</a>
+          </div>
+        </dxi-item> -->
+      </dxi-item>
+      <dxi-item style="text-align: center;">
+        <dx-button
+          class="custom-button"
+          text="Sign In"
+          (click)="login()"
+        ></dx-button>
+      </dxi-item>
+    </dx-form>
+  </div>
+
+
+
+
+
+
+
+  <div class="toggle-container">
+    <div class="toggle">
+      <div class="toggle-panel toggle-left">
+        <h1>Welcome Back!</h1>
+        <p class="message" *ngIf="message">{{ message }}</p>
+        <p>Enter your personal details to use all of site features</p>
+        <dx-button
+          class="hidden"
+          id="login"
+          (click)="removeActiveClass()"
+          text="Sign In"
+        ></dx-button>
+      </div>
+      <div class="toggle-panel toggle-right">
+        <h1>Hello, Friend!</h1>
+        <p class="message" *ngIf="message">{{ message }}</p>
+        <p>Register with your personal details to use all of site features</p>
+        <dx-button
+          class="hidden"
+          id="register"
+          (click)="addActiveClass()"
+          text="Sign Up"
+        ></dx-button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="user-panel-container">
+  <div class="img-uname-wrapper" (click)="toggleMenu()" [ngClass]="{'img-uname-wrapper-focused': menuVisible}">
+    <div class="user-image"></div> 
+    <div class="user-name">{{ user.username }}</div> 
+    <div class="down-arrow">˅</div>
+  </div>
+  <dx-list
+    *ngIf="menuVisible"
+    [items]="logoutItems"
+    (onItemClick)="handleLogout($event)"
+    [hoverStateEnabled]="false"
+    [activeStateEnabled]="false"
+    [focusStateEnabled]="false"
+    class="dx-list-dropdown custom-dx-list">
+  </dx-list>
+</div>

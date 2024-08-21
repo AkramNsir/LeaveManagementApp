@@ -1,0 +1,163 @@
+/* ==========================
+      table of contents
+=============================
+ 
+1.Container & title Design
+2.Scheduler Design 
+3.palette container(lower section) Design
+4.Dark Mode Design
+
+*/
+
+/* ============================
+    1.Container & title Design
+===============================*/
+
+.scheduler-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.title {
+  color: var(--primary-color);
+  padding-left: 17px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.loading-title {
+  padding-left: 17px;
+  color: var(--primary-color-icon);
+}
+
+
+/* ============================
+    2.Scheduler Design
+===============================*/
+
+.scheduler-container ::ng-deep .dx-scheduler-header {
+  height: 64px;
+  border-radius: 14px;
+  padding-left: 6px;
+  border: 1px solid #ccc;
+}
+
+.scheduler-container ::ng-deep .dx-scheduler-work-space {
+    border: 1px solid #ccc;
+    border-radius: 14px;
+    margin-top: 1rem
+}
+
+.scheduler-container ::ng-deep .dx-button-mode-contained.dx-state-selected {
+  background-color: var(--primary-color-20);
+}
+
+.scheduler-container ::ng-deep .dx-scheduler-header-panel-cell {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+::ng-deep .scheduler-container .dx-widget * {
+  font-weight: 500;
+  color: #000;
+}
+
+::ng-deep .dx-scheduler-appointment-collector.dx-button.dx-button-default {
+  background-color: var(--primary-color-20);
+}
+
+::ng-deep .dx-popup-wrapper.dx-scheduler-appointment-tooltip-wrapper .dx-tooltip-appointment-item .dx-tooltip-appointment-item-marker-body {
+  display: none;
+}
+
+::ng-deep .dx-scheduler-work-space-month .dx-scheduler-date-table-cell {
+  height: 73.5px
+}
+
+::ng-deep .dx-item.dx-list-item.dx-state-focused.dx-state-active {
+  background-color: var(--primary-color-20);
+}
+
+::ng-deep .dx-switch-handle::before {
+  background-color: var(--primary-color-40) !important;
+}
+
+/* ============================================
+    3.palette container(lower section) Design
+===============================================*/
+
+.scheduler-container .palette-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.scheduler-container .palette-container .color-container {
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  width: 15px;
+  height: 15px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.scheduler-container .palette-container .piece-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  width: 160px;
+}
+
+
+/* ============================
+    4.Dark Mode Design
+===============================*/
+
+:host-context(.dark) .title {
+  color: var(--title);
+}
+
+/*    title     */
+
+:host-context(.dark) .loading-title {
+  color: var(--subtitle);
+}
+
+/*    Scheduler     */
+
+:host-context(.dark) ::ng-deep .scheduler-container .dx-widget * {
+  background-color: transparent;
+  border-color: var(--border-color-dark);
+  color: var(--subtitle);
+}
+
+:host-context(.dark) .scheduler-container ::ng-deep .dx-button-mode-contained.dx-state-selected {
+  background-color: var(--hover-color-dark);
+}
+
+:host-context(.dark) .scheduler-container ::ng-deep .dx-button-mode-contained.dx-state-hover {
+  background-color: #2c2c31;
+}
+
+:host-context(.dark) ::ng-deep .dx-scheduler-appointment-title {
+  color: #000 !important;
+}
+
+:host-context(.dark) ::ng-deep .dx-scheduler-appointment-content-date {
+  color: #000 !important;
+}
+
+/*    palette container     */
+
+:host-context(.dark) .scheduler-container .palette-container .color-container {
+  border-color: var(--border-color-dark);
+  opacity: 0.73;
+}
+
+:host-context(.dark) .scheduler-container .palette-container .piece-container p {
+  color: var(--subtitle);
+}
+

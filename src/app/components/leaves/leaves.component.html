@@ -1,0 +1,71 @@
+<!-- data-grid.component.html -->
+  <h1 class="leave-title" >All Absences</h1>
+  <p *ngIf="isLoading" class="loading-title">Loading...</p>
+  <dx-data-grid
+    *ngIf="!isLoading"
+    class="custom-data-grid"
+    [dataSource]="absences"
+    keyExpr="Id"  
+    [showBorders]="false"
+    [focusedRowEnabled]="true"
+    [focusedRowIndex]="0"
+    (onCellPrepared)="onCellPrepared($event)">
+    
+    <dxo-paging [pageSize]="5"></dxo-paging>
+    <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5, 10, 15]" [showInfo]="true"></dxo-pager>
+    <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+    <dxi-column dataField="ParentId" caption="Person">
+      <dxo-lookup
+      [dataSource]="substitutes"
+      displayExpr="FullName"
+      valueExpr="Id"
+    ></dxo-lookup>
+    </dxi-column>
+    <dxi-column dataField="Type" caption="Type">
+      <dxo-lookup
+      [dataSource]="leaveTypeOptions"
+      displayExpr="Description"
+      valueExpr="Value"
+    ></dxo-lookup>
+    </dxi-column>
+    <dxi-column dataField="IsApproved" caption="Is Approved">
+      <dxo-lookup
+      [dataSource]="isApprovedOptions"
+      displayExpr="Description"
+      valueExpr="Value"
+    ></dxo-lookup>
+    </dxi-column>
+    <dxi-column dataField="ProcessState" caption="Process State">
+      <dxo-lookup
+      [dataSource]="processStatesOptions"
+      displayExpr="Description"
+      valueExpr="Value"
+    ></dxo-lookup>
+    </dxi-column>
+    <dxi-column dataField="StartDate" caption="From" dataType="date" [width]="120"></dxi-column>
+    <dxi-column dataField="EndDate" caption="To" dataType="date" [width]="120"></dxi-column>
+    <dxi-column dataField="Days" caption="Duration (days)" alignment="left" [width]="150" [calculateDisplayValue]="getDurationDisplayValue" ></dxi-column>
+    <dxi-column dataField="ApplicantDate" caption="Request Date" dataType="date" [width]="150" ></dxi-column>
+    <dxi-column dataField="IdRefPersonSubstitution" caption="Substitute"  >
+      <dxo-lookup
+      [dataSource]="substitutes"
+      displayExpr="FullName"
+      valueExpr="Id"
+    ></dxo-lookup>
+    </dxi-column>
+    <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+
+    <dxo-toolbar class="grid-toolbar">
+      <dxi-item name="addRowButton" showText="always"></dxi-item>
+    </dxo-toolbar>
+
+    <!-- <dxi-column type="buttons" width="100">
+      
+        <dxi-button icon="edit" hint="Edit" ></dxi-button>
+        <dxi-button icon="trash" hint="Delete"></dxi-button>
+      
+    </dxi-column> -->
+
+    <dxo-group-panel [visible]="true"></dxo-group-panel>
+  </dx-data-grid>

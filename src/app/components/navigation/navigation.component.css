@@ -1,0 +1,373 @@
+/* ==========================
+      table of contents
+=============================
+ 
+1.Container Design
+2.App user Panel Design
+3.Drawer content Design
+4.Lower Section Design
+5.Upper Section Design
+6.Left & Right Section Design
+7.Toolbar Design
+8.Side nav list Design
+9.Dark Mode Design
+
+*/
+
+/* =====================
+    1.Container Design
+========================*/
+
+.container { 
+  position: absolute;
+  top: 20px;
+  left: 1.5vw;
+  height: calc(100vh - 60px);
+  padding-bottom: 30px;
+}
+
+/* ===========================
+    2.App user Panel Design
+==============================*/
+
+app-user-panel {
+  position: absolute;
+  top: -7px;
+  right: 70px;
+  z-index: 1000;
+}
+
+::ng-deep .dx-overlay-content {
+  background-color: lightgray;
+}
+
+/* ===========================
+    3.Drawer content Design
+==============================*/
+
+::ng-deep app-dashboard .dx-drawer-shrink .dx-drawer-content {
+  margin-top: 30px;
+  padding-right: 5px !important;
+  overflow-y: scroll;
+  height: calc(100vh - 135px);
+}
+
+/* ===========================
+    4.Lower Section Design
+==============================*/
+
+::ng-deep #lower-view {
+  margin-left: 30px;
+  margin-top: 30px;
+  height: calc(100vh - 135px);
+  background-color: #fff;
+  border-radius: 14px;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+/* ===========================
+    5.Upper Section Design
+==============================*/
+
+::ng-deep #upper-view {
+  display: flex;
+  gap: 15px;
+  margin-left: 30px;
+  /* margin-top: 30px; */
+  margin-bottom: -15px;
+  height: 67vh;
+  border-radius: 14px;
+  overflow-y: auto;
+}
+
+/* ================================
+    6.Left & Right Section Design
+===================================*/
+
+::ng-deep #left-view, ::ng-deep #right-view { 
+  background-color: #fff;
+  width: 50%;
+  padding: 30px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* ===========================
+    7.Toolbar Design
+==============================*/
+
+::ng-deep #toolbar {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 14px;
+  padding: 5px 20px;
+  padding-bottom: 15px;
+  height: 65px;
+  z-index: 1000;
+}
+
+::ng-deep #toolbar .dx-toolbar-button .dx-button {
+  border: none;
+  border-radius: 50%;
+  padding: 1px;
+  margin-top: 3px;
+}
+
+::ng-deep #toolbar .dx-toolbar-button .dx-button .dx-icon{
+  font-size: 1.3rem;
+  color: var(--primary-color-icon);
+}
+
+::ng-deep .dx-toolbar-button > .dx-toolbar-item-content {
+  margin-left: -7px;
+}
+
+::ng-deep .dx-toolbar-button h1 {
+  font-size: 1.5rem; 
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-left: 10px;
+  margin-top: 7px;  
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+::ng-deep .dx-toolbar-button h1:hover {
+  text-shadow: 0 0 3px var(--primary-color-40);
+}
+
+::ng-deep #toolbar .modeButton .dx-button-has-icon {
+  background-color: transparent;
+  border: 1px solid rgba(244, 165, 96, 0.25);
+  box-shadow: 0.1px 0.1px 3px var(--subtitle);
+}
+
+::ng-deep #toolbar .modeButton .dx-button-has-icon .dx-icon {
+  color: var(--subtitle);
+  opacity: 0.5;
+}
+
+::ng-deep #toolbar .modeButton .dx-button-has-icon.dx-state-hover .dx-icon {
+  /* color: #c9c9c9; */
+  opacity: 1;
+  transition: 0.4s;
+}
+
+::ng-deep #toolbar .modeButton .dx-button-has-icon.dx-state-hover {
+  border: 1px solid #ccc;
+  transform: scale(0.95);
+  transition: 0.4s;
+}
+
+::ng-deep #toolbar .menuButton .dx-button-has-icon {
+  border: none;
+  background-color: transparent;
+  box-shadow: 0.1px 0.1px 3px var(--subtitle);
+}
+
+::ng-deep #toolbar .menuButton .dx-button-has-icon.dx-state-hover {
+  background-color: #eee;
+  transition: 0.4s;
+}
+
+
+/* ===========================
+    8.Side nav list Design
+==============================*/
+
+::ng-deep .dx-list.side-nav-list {
+  border-radius: 14px;
+  background-color: #fff;
+  margin-top: 30px;
+  padding: 15px;
+  height: calc(100vh - 135px);
+}
+
+::ng-deep .dx-list.side-nav-list a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+::ng-deep .side-nav-list .dx-list-item-icon {
+  margin-right: 10px;
+}
+
+::ng-deep .side-nav-list .dx-list-item-icon-container .dx-icon {
+  color: var(--primary-color-icon);
+}
+
+::ng-deep .side-nav-list .dx-list-item {
+  border-top: none;
+  border-radius: 14px;
+  margin-bottom: 5px;
+  padding: 3px 5px;
+}
+
+::ng-deep .side-nav-list .dx-list-item:hover {
+  border: solid 1px #ccc;
+  box-shadow: 0 0 4px #ccc;
+  transform: scale(0.98);
+  transition: 0.5s;
+}
+
+::ng-deep .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-list-item-selected .dx-list-item-icon-container .dx-icon {
+  color: var(--primary-color-icon);
+}
+
+::ng-deep .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-list-item-selected  {
+  background-color: var(--primary-color-20);
+}
+
+.toggleSideNav-container,
+.toggleSideNav-container-closed {
+  
+  background-color: transparent ; 
+  margin-top: -60px;
+  padding: 10px;
+  width: 35px;
+  z-index: 2000 !important;
+  margin-left: 200px;
+  border-radius: 12px;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  overflow: hidden;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  transition: margin-left 0.5s ease; 
+}
+
+.toggleSideNav-container-closed {
+  margin-left: 20px;
+}
+
+.toggleSideNav-container i,
+.toggleSideNav-container-closed i{
+  color: var(--primary-color-icon);
+  font-weight: 600;
+  font-size: 1.1rem
+}
+
+.toggleSideNav-container:hover,
+.toggleSideNav-container-closed:hover {
+  cursor: pointer;
+  background-color: #eee;
+} 
+
+
+
+
+
+/* ===========================
+    9.Dark Mode Design
+==============================*/
+
+
+/*    lower section     */
+
+#body.dark #lower-view {
+  border: 1px solid var(--border-color-dark);
+  background-color: var(--bg-color-dark);
+  color: var(--title) ;
+}
+
+/*    upper section     */
+
+#body.dark  #upper-view {
+  border: none;
+  background-color: transparent;
+  color: var(--title);
+}
+
+/*    left & right section     */
+
+#body.dark  #left-view, .dark  #right-view { 
+  border: 1px solid var(--border-color-dark);
+  background-color: var(--bg-color-dark);
+  color: var(--title);
+}
+
+/*    toolbar     */
+
+#body.dark  #toolbar {
+  border: 1px solid var(--border-color-dark);
+  background-color: var(--bg-color-dark);
+  color: var(--title);
+}
+
+:host-context(.dark) ::ng-deep #toolbar .modeButton .dx-button-has-icon .dx-icon {
+  color: #FDB813;
+  opacity: 0.5;
+}
+
+#body.dark ::ng-deep #toolbar .modeButton .dx-button-has-icon.dx-state-hover .dx-icon {
+  opacity: 1;
+  transition: 0.4s;
+}
+#body.dark ::ng-deep .dx-toolbar-button h1 {
+  color: var(--title);
+}
+
+#body.dark ::ng-deep .dx-toolbar-button h1:hover {
+  text-shadow: 0 0 3px var(--subtitle);
+}
+
+#body.dark ::ng-deep #toolbar .modeButton .dx-button-has-icon.dx-state-hover {
+  border: 1px solid rgb(244, 165, 96);
+}
+
+#body.dark ::ng-deep #toolbar .menuButton .dx-button-has-icon.dx-state-hover {
+  background-color: var(--hover-color-dark);
+  transition: 0.4s;
+}
+
+
+/*    side nav section     */
+
+#body.dark  .dx-list.side-nav-list {
+  border: 1px solid var(--border-color-dark);
+  background-color: var(--bg-color-dark);
+  color: var(--title);
+}
+
+#body.dark ::ng-deep .dx-list.side-nav-list a {
+  color: var(--title) !important;
+}
+
+#body.dark ::ng-deep .dx-item.dx-list-item.dx-list-item-selected {
+  background-color: var(--hover-color-dark);
+}
+#body.dark ::ng-deep .dx-item.dx-list-item.dx-list-item-selected .dx-icon {
+  color: var(--subtitle);
+}
+
+#body.dark ::ng-deep .side-nav-list .dx-list-item-icon-container .dx-icon {
+  color: var(--primary-color-icon);
+}
+
+#body.dark ::ng-deep .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-list-item-selected .dx-list-item-icon-container .dx-icon {
+  color: var(--primary-color-icon);
+}
+
+#body.dark .toggleSideNav-container,
+#body.dark .toggleSideNav-container-closed {
+  color: var(--title);
+}
+
+#body.dark .toggleSideNav-container:hover,
+#body.dark .toggleSideNav-container-closed:hover {
+  background-color: var(--hover-color-dark);
+}
+/* #body.dark ::ng-deep .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-list-item-selected  {
+  background-color: var(--primary-color-20);
+} */
+
+
+
+
+

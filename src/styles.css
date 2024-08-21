@@ -1,1 +1,287 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+/* ==========================
+      table of contents
+=============================
+ 
+1.Color vars
+2.Global style 
+3.ScrollBar Design
+4.Dark Mode Global Design
+
+*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+
+/* =====================
+    1.Color vars
+========================*/
+
+:root {
+  --primary-color: #443161;
+  --primary-color-icon: #F39654;
+  --primary-color-icon-40: #FAD5BB;
+  --primary-color-icon-60: #F8C098;
+  --primary-color-icon-80: #F6AB76;
+  --secondary-color-light: #6F698E;
+  --secondary-color-juicy: #80529D;
+  --primary-color-20: #DAD6DF; 
+  --primary-color-40: #B4ADC0;
+  --primary-color-60: #8F83A0;  
+  --primary-color-80: #695A81;   
+  --accent-color: #ffc107;
+  --title: rgb(244 244 245);
+  --subtitle: rgb(161 161 170);
+  --bg-color-dark: #0f0f0f;
+  --border-color-dark: #27272C;
+  --hover-color-dark: #2c2c2e;
+}
+
+/* =====================
+    2.Global style
+========================*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background-color: var(--primary-color-40);
+    background: linear-gradient(to right, #e2e2e2, var(--primary-color-20));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/*    Data grid     */
+
+.dx-datagrid-rowsview .dx-row-focused.dx-data-row .dx-command-edit:not(.dx-focused) .dx-link {
+  background-color: var(--primary-color-20) !important;
+  color: var(--primary-color-icon);
+}
+
+.dx-datagrid-content .dx-datagrid-table .dx-row .dx-command-edit.dx-command-edit-with-icons .dx-link {
+  color: var(--primary-color-icon);
+}
+
+.dx-datagrid-content .dx-datagrid-table .dx-row .dx-command-edit.dx-command-edit-with-icons .dx-link:hover {
+  color: var(--primary-color-icon-60);
+}
+
+/*    Pop ups     */
+
+.dx-popup-wrapper .dx-state-focused.dx-overlay-content {
+  border-color: var(--secondary-color-juicy) !important;
+}
+
+.dx-texteditor.dx-state-focused.dx-editor-outlined {
+  border-color: var(--secondary-color-juicy) !important;
+}
+
+.dx-toolbar-label .dx-toolbar-item-content > div {
+  color: var(--primary-color);
+}
+
+/* =====================
+    3.ScrollBar Design
+========================*/
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+::-webkit-scrollbar-track {
+  border: 7px solid #ccc;
+  box-shadow: inset 0 0 2.5px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color-40);  /*b1cfea*/
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color-60);
+}
+
+
+/* =============================
+    4.Dark Mode Global Design
+================================*/
+
+/*    body     */
+
+.dark body{
+  background-color: #000;
+  background: linear-gradient(to right, #000, #000);
+}
+
+/*    pop ups     */
+
+.dark .dx-popup-wrapper .dx-state-focused.dx-overlay-content {
+  border-color: var(--border-color-dark) !important;
+}
+
+.dark .dx-texteditor.dx-state-focused.dx-editor-outlined {
+  border-color: var(--border-color-dark) !important;
+}
+
+/*    ScrollBar     */
+
+.dark ::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+.dark ::-webkit-scrollbar-track {
+  border: 7px solid #292c3b;
+  box-shadow: inset 0 0 2.5px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+/* DARK MODE : global styles for popups (add / update / delete) */
+
+/*     Pop up     */
+
+.dark .dx-overlay-shader {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.dark .dx-overlay-wrapper.dx-popup-wrapper.dx-overlay-shader .dx-overlay-content.dx-popup-normal {
+  background-color: #0f0f0f;
+  border: 1px solid #27272C;
+  color: var(--subtitle);
+}
+
+.dark .dx-popup-title.dx-toolbar {
+  color: var(--title);
+}
+
+.dark .buttons-container .dx-button-mode-contained,
+.dark .addButton.dx-button-mode-text, .dark .dx-popup-bottom .dx-button {
+  background-color: transparent !important;
+  border-color: var(--subtitle);
+  color: var(--subtitle);
+  box-shadow: 0.1px 0.1px 3px var(--subtitle);
+}
+
+.dark .buttons-container .dx-button-mode-contained.dx-state-hover,
+.dark .addButton.dx-button-mode-text, .dark .dx-popup-bottom .dx-button.dx-state-hover {
+  color: var(--title);
+  border-color: var(--title);
+}
+
+.dark .dx-popup-title.dx-toolbar .dx-closebutton {
+  background-color: #2c2c2e;
+}
+
+.dark .dx-texteditor.dx-editor-outlined {
+  /* inputs of pop ups*/
+  opacity: 0.95;
+}
+
+.dark .dx-toolbar-label .dx-toolbar-item-content > div {
+  color: var(--title);
+}
+
+
+/*    floating button     */
+
+.dark .dx-fa-button.dx-fa-button-main .dx-overlay-content {
+  background-color: #39393f;
+  border: 1px solid #27272C;
+}
+
+
+.dark .dx-fa-button.dx-fa-button-main .dx-overlay-content.dx-state-hover {
+  background-color: #2c2c2e;
+}
+
+.dark .dx-fa-button.dx-fa-button-main .dx-overlay-content.dx-state-active {
+  background-color: #2c2c2e;
+}
+
+/*    Calendar dateBoxes     */
+
+.dark .dx-popup-wrapper > .dx-overlay-content {
+  background-color : #eee;
+}
+
+.dark .dx-calendar.dx-calendar-view-month.dx-widget.dx-visibility-change-handler.dx-swipeable {
+  background-color : #eee;
+}
+
+.dark .dx-popup-inherit-height .dx-popup-content > .dx-widget {
+  background-color: #eee;
+}
+
+/*    Appointment details pop up     */
+
+.dark .dx-field-item-label-text {
+  color: var(--title);
+}
+
+.dark .dx-scheduler-appointment-popup .dx-button.dx-popup-cancel {
+  color: var(--subtitle);
+}
+
+.dark .dx-scheduler-appointment-popup .dx-button.dx-popup-cancel.dx-state-hover {
+  transform: scale(0.95);
+  color: var(--title);
+  transition: 0.4s;
+}
+
+.dark .dx-switch.dx-state-readonly .dx-switch-container {
+  opacity: 0.9;
+}
+
+.dark .dx-texteditor.dx-editor-outlined {
+  background-color: #f5f5f5;
+  opacity: 0.9;
+}
+
+/*    Appointment details pop up for light mode    */
+
+.dx-scheduler-appointment-popup .dx-button.dx-popup-cancel {
+  color: #000;
+  background-color: var(--primary-color-20);
+  border-radius: 14px;
+}
+
+.dx-scheduler-appointment-popup .dx-button.dx-popup-cancel.dx-state-hover {
+  transform: scale(0.95);
+  color: #000;
+  transition: 0.4s;
+}
+
+.dx-switch.dx-state-hover .dx-switch-container {
+  border-color: var(--secondary-color-juicy);
+}
+
+
+
+
+
+
+
+
+
+

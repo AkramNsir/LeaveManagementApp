@@ -1,0 +1,36 @@
+<div *ngIf="isLoading">
+  <p class="loading-title">Loading...</p>
+</div>
+
+<div *ngIf="!isLoading" class="bar-container" >
+  <dx-chart id="chart" [dataSource]="dataSource" [margin]="{ top: 25 }" [size]="{ width: 1100, height: 490 }">
+    <dxi-series
+      argumentField="month"
+      valueField="value"
+      name="Total Absences"
+      type="bar"
+      color="#F39654"
+      [barWidth]="35"
+      >
+    </dxi-series>
+
+    <dxo-legend
+    [margin]="{ left:25}"
+    horizontalAlignment="right"
+    verticalAlignment="top"
+    ></dxo-legend>
+  
+    <dxo-export [enabled]="true" ></dxo-export>
+    <dxo-title 
+    [text]="'Team Absences Track'" 
+    [font]="{ weight: 900, size: 30 }"
+    [margin]="{ bottom: 55}" 
+    >
+  </dxo-title>
+
+  <dxo-tooltip
+    [enabled]="true"
+  >
+  </dxo-tooltip>
+  </dx-chart>
+</div>

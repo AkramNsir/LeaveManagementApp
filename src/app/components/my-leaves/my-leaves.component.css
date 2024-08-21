@@ -1,0 +1,417 @@
+/* ==========================
+      table of contents
+=============================
+ 
+1.title Design
+2.Data Grid Design
+3.Pop up Design
+4.Dark Mode Design
+
+*/
+
+/* =====================
+    1.title Design
+========================*/
+
+.leave-title {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  padding-left: 17px;
+  font-size: 1.3rem;
+}
+
+.loading-title {
+  padding-left: 17px;
+  color: var(--primary-color-icon);
+}
+
+/* =====================
+    2.Data Grid Design
+========================*/
+
+::ng-deep .dx-datagrid-headers {
+  color: #000;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding-bottom: 30px;
+  border-bottom: none;
+}
+
+::ng-deep .dx-datagrid-content .dx-datagrid-table {
+  border:none
+}
+
+::ng-deep .dx-datagrid-headers .dx-datagrid-table .dx-row > td {
+  border: none;
+} 
+
+::ng-deep .dx-datagrid .dx-column-lines > td {
+  border: none;
+}
+
+::ng-deep .dx-datagrid-rowsview .dx-row {
+  font-weight: 500;
+  border: none;
+  height:50px;
+}
+
+::ng-deep .dx-datagrid-headers + .dx-datagrid-rowsview {
+  border-top: none;          /*1px solid #ccc;*/
+  /* padding-top: 20px; */
+}
+
+::ng-deep .dx-datagrid .dx-datagrid-rowsview .dx-data-row td.dx-pointer-events-none {
+  border: none;
+}
+
+::ng-deep .dx-datagrid-content .dx-datagrid-table .dx-row .dx-editor-cell:not(.dx-datagrid-cell-expandable):hover  {
+  background-color: gray;
+  border-radius: 14px;
+  transition: 0.3s;
+}
+
+::ng-deep .dx-datagrid-rowsview .dx-row-focused.dx-data-row > td:not(.dx-focused) {
+  background-color: var(--primary-color-20);
+}
+
+::ng-deep dx-datagrid-rowsview .dx-row-focused.dx-data-row:not(.dx-row-lines) > td {
+  border-top: var(--primary-color-20);
+  border-bottom: var(--primary-color-20);
+}
+
+::ng-deep .dx-pager .dx-page-sizes .dx-selection {
+  background-color: var(--primary-color-20);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+::ng-deep .dx-pager .dx-pages .dx-selection {
+  background-color: var(--primary-color-20);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+::ng-deep .dx-datagrid-content .dx-datagrid-table .dx-row .dx-editor-cell .dx-texteditor-container {
+  margin-left: 2px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 97%;
+}
+
+::ng-deep .dx-datagrid-content .dx-datagrid-table .dx-row .dx-editor-cell .dx-texteditor-container:focus {
+  border: 1px solid var(--primary-color-20);
+}
+
+::ng-deep .dx-datagrid-filter-row .dx-editor-cell .dx-editor-with-menu .dx-texteditor-input, 
+::ng-deep .dx-editor-cell .dx-texteditor .dx-texteditor-input {
+  background-color: #F5F5F5;
+}
+
+::ng-deep .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-active {
+  background-color: var(--primary-color-20);
+}
+.custom-data-grid .dx-row.dx-data-row.dx-column-lines {
+  height: 50px;
+}
+
+
+/* isApproved bg colors depending on the value */
+
+.status-approved {
+  background-color: #90EE90;
+}
+
+.status-rejected {
+  background-color: #FF7F7F;
+}
+
+.status-pending {
+  background-color: #FFFDAF;
+}
+
+
+::ng-deep .dx-datagrid-header-panel {
+  border: none;
+  margin-bottom: 1rem;
+}
+
+::ng-deep .dx-datagrid-content .dx-datagrid-table {
+  border-collapse: unset;
+}
+
+::ng-deep .dx-datagrid-rowsview .dx-row-focused.dx-data-row .dx-command-edit .dx-link:focus {
+  background-color: var(--primary-color-icon);
+}
+
+/* ::ng-deep .dx-datagrid-rowsview .dx-data-row .dx-command-edit .dx-link:hover {
+  color: var(--primary-color-icon-40);
+} */
+
+::ng-deep .dx-datagrid-rowsview .dx-row-focused.dx-data-row .dx-command-edit .dx-link:hover{
+  color: var(--primary-color-icon-80);
+}
+
+/*    for the rows without the edit button    */
+
+::ng-deep .dx-data-row.no-edit-icon .dx-command-edit .dx-link-edit,
+::ng-deep .dx-data-row.no-edit-icon .dx-command-edit .dx-link-edit:hover,
+::ng-deep .dx-data-row.no-edit-icon .dx-command-edit .dx-link-edit:focus {
+  pointer-events: none !important; 
+  cursor: not-allowed !important;  
+  color: transparent !important;
+}
+
+/* =====================
+    3.Pop up Design
+========================*/
+
+
+::ng-deep .addButton.dx-button-mode-text , ::ng-deep .dx-popup-bottom .dx-button {
+  border: 1px solid #ccc;
+  background-color: var(--primary-color-20);
+  border-radius: 14px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+::ng-deep .addButton.dx-button-mode-text {
+  padding: 3px;
+}
+
+::ng-deep .addButton.dx-button-mode-text:hover, ::ng-deep .dx-popup-bottom .dx-button:hover {
+  background-color: var(--primary-color-20);
+  transform: scale(0.95);
+}
+
+::ng-deep .addButton.dx-button-mode-text .dx-icon {
+ color: var(--primary-color-icon);
+ font-weight: 500;
+}
+
+
+::ng-deep .dx-popup-title.dx-toolbar .dx-toolbar-items-container {
+  margin-top: 5px;
+}
+
+::ng-deep .dx-popup-title.dx-toolbar .dx-closebutton.dx-state-hover {
+  transform: rotate(360deg);
+  transition: 0.5s ease;
+}
+
+::ng-deep .dx-popup-title.dx-toolbar .dx-closebutton {
+  border-radius: 50%;
+  padding: 3px;
+}
+
+::ng-deep .dx-toolbar-button .dx-button .dx-icon {
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--primary-color-icon);
+}
+
+::ng-deep .dx-toolbar-label > div {
+  font-weight: 700;
+  width: 300px;
+  font-size: 1.5rem;  
+}
+
+::ng-deep .dx-popup-title.dx-toolbar {
+  border: none;
+}
+
+::ng-deep .dx-popup-content {
+  padding-top: 35px;
+}
+
+::ng-deep .add-popUp .dx-texteditor.dx-editor-outlined {
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 70%;
+  height: 40px;
+} 
+
+::ng-deep .add-popUp .dx-texteditor.dx-editor-outlined.dx-state-focused {
+  border-color: var(--primary-color);
+} 
+
+.buttons-container {
+  display: flex;
+  gap: 5px;
+  justify-content: end;
+  margin-top: 260px;
+}
+
+.buttons-container-adjusted {
+  margin-top: 210px;
+}
+
+::ng-deep .buttons-container .dx-button-mode-contained {
+  background-color: var(--primary-color-20);
+  border-color: #ccc;
+  color: #000;
+  font-weight: 500;
+  border-radius: 14px;
+  padding: 1px 0;
+  min-width: 100px;
+  transition: 0.4s ease;
+}
+
+::ng-deep .buttons-container .dx-button-mode-contained.dx-state-hover {
+  transform: scale(0.95);
+}
+
+
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group label {
+  width: 120px;
+  font-weight: 500;
+}
+
+.form-group .select-box-scroll {
+  max-height: 100px; /* Adjust as needed */
+  overflow-y: auto;
+}
+
+::ng-deep .dx-overlay-wrapper.dx-popup-wrapper.dx-dialog-wrapper.dx-dialog-root.dx-overlay-shader .dx-popup-wrapper > .dx-overlay-content{
+  width: 35vw;
+  height: 30vh ! important;
+  border-radius: 14px;
+  text-align: center;
+  padding-top: 35px;
+}
+
+/* ::ng-deep .dx-overlay-content.dx-popup-normal.dx-popup-draggable.dx-resizable {
+  height: auto !important;
+} */
+
+
+/* ::ng-deep .dx-calendar-empty-cell.dx-calendar-cell span {
+  background-color: #B9F3FC !important; 
+} */
+
+
+
+/* =====================
+    4.Dark Mode Design 
+========================*/
+
+:host-context(.dark) .leave-title {
+  color: var(--title);
+}
+
+
+/*    title     */
+
+:host-context(.dark) .loading-title {
+  color: var(--subtitle);
+}
+
+/*    data grid     */
+
+:host-context(.dark) ::ng-deep .dx-datagrid-headers {
+  color: var(--title);
+  background-color: transparent;
+}
+
+:host-context(.dark) ::ng-deep .dx-command-edit.dx-command-edit-with-icons.dx-cell-focus-disabled,
+:host-context(.dark) ::ng-deep .dx-command-edit.dx-command-edit-with-icons {
+  background-color: #0f0f0f;
+}
+
+:host-context(.dark) ::ng-deep .dx-dropdowneditor-input-wrapper,
+:host-context(.dark) ::ng-deep .dx-editor-cell .dx-texteditor {
+  background-color: #0f0f0f;
+  color: var(--title);
+}
+
+
+:host-context(.dark) ::ng-deep .dx-datagrid-content .dx-datagrid-table .dx-row .dx-editor-cell .dx-texteditor-container {
+  border: 2px solid #2c2c31;
+}
+
+:host-context(.dark) ::ng-deep .dx-dropdowneditor-icon {
+   color: var(--subtitle);
+}
+
+:host-context(.dark) ::ng-deep .dx-gridbase-container > .dx-datagrid-rowsview.dx-scrollable {
+  background-color: transparent;
+  color: var(--subtitle);
+}
+
+:host-context(.dark) ::ng-deep .dx-dropdowneditor.dx-dropdowneditor-active .dx-dropdowneditor-icon {
+  background-color: transparent;
+}
+
+:host-context(.dark) ::ng-deep .dx-row.dx-data-row.dx-row-focused .dx-command-edit.dx-command-edit-with-icons{
+  background-color: var(--primary-color-20);
+}
+
+:host-context(.dark) ::ng-deep .dx-datagrid-rowsview .dx-data-row .dx-command-edit .dx-link:hover {
+  color: var(--subtitle);
+}
+
+:host-context(.dark) ::ng-deep .dx-datagrid-rowsview .dx-row-focused.dx-data-row .dx-command-edit .dx-link:hover{
+  color: var(--subtitle);
+}
+
+:host-context(.dark) ::ng-deep .dx-datagrid-nodata {
+  color: var(--subtitle);
+}
+
+:host-context(.dark) ::ng-deep .dx-datagrid-filter-row .dx-editor-cell .dx-editor-with-menu .dx-texteditor-input, 
+:host-context(.dark) ::ng-deep .dx-editor-cell .dx-texteditor .dx-texteditor-input {
+  opacity: 0.95;
+}
+
+
+/*    add Absence button    */
+
+:host-context(.dark) .addButton.dx-button-mode-text {
+  border: 1px solid var(--subtitle);
+  background-color: transparent;
+  box-shadow: 0.1px 0.1px 3px var(--subtitle);
+  color: var(--subtitle);
+  transition: 0.3s ease;
+}
+
+
+:host-context(.dark) .addButton.dx-button-mode-text:hover {
+  background-color: transparent;
+  border-color: var(--title);
+  color: var(--title);
+  transform: scale(0.95);
+}
+
+/*    pager     */
+
+:host-context(.dark) ::ng-deep .dx-pager .dx-page-sizes {
+  background-color: transparent;
+  color: var(--subtitle);
+}
+
+:host-context(.dark) ::ng-deep .dx-pager .dx-page-sizes .dx-selection {
+  border: 1px solid #27272C;
+  background-color: #2c2c2e;
+  color: var(--title);
+}
+
+:host-context(.dark) ::ng-deep .dx-pager .dx-pages {
+  background-color: transparent;
+  color: var(--subtitle);
+}
+
+:host-context(.dark) ::ng-deep .dx-pager .dx-pages .dx-selection {
+  border: 1px solid #27272C;
+  background-color: #2c2c2e;
+  color: var(--title);
+}
+
+
+

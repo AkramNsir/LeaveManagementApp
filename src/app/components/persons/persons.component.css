@@ -1,0 +1,323 @@
+/* ==========================
+      table of contents
+=============================
+ 
+1.Container, title & search Box Design
+2.Persons list containers Design
+3.Floating Button Design
+4.List & List items(cards) Design
+5.Pop ups Design
+6.Dark Mode Design
+
+*/
+
+/* ========================================
+    1.Container, title & search Box Design
+===========================================*/
+
+.team-container {
+  position: relative;
+}
+
+.team-container .title {
+  color: var(--primary-color);
+  margin-bottom: 2.5rem;
+  padding-left: 17px;
+  font-size: 1.3rem;
+}
+
+.team-container .loading-title {
+  color: var(--primary-color-icon);
+}
+
+.team-container .search-box {
+  margin: auto;
+  margin-bottom: 20px;
+  width: 50%;
+  height: 45px;
+  background-color: #f5f5f5;
+  border-radius: 14px;
+  padding: 3px 10px;
+}
+
+.team-container .search-box:active, 
+.team-container .search-box:hover {
+  border-color: var(--secondary-color-juicy) !important;
+}
+
+/* ===================================
+    2.Persons list containers Design
+======================================*/
+
+.team-container .list-container {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 1;
+}
+
+.team-container img {
+  width: 65px;
+  height: 65px;
+  border-radius: 10px;
+}
+
+.team-container .person-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.team-container .person-container .info_container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+/* ===================================
+    3.Floating Button Design
+======================================*/
+
+::ng-deep .dx-fa-button.dx-fa-button-main .dx-overlay-content {
+  background-color: var(--primary-color-20);
+  color: var(--primary-color-icon);
+  border: 1px solid #ccc;
+  position: absolute;
+  transition: 0.4s ease;
+}
+
+
+::ng-deep .dx-fa-button.dx-fa-button-main .dx-overlay-content.dx-state-hover {
+  background-color: var(--primary-color-40);
+}
+
+::ng-deep .dx-fa-button.dx-fa-button-main .dx-overlay-content.dx-state-active {
+  background-color: var(--primary-color-20);
+}
+
+::ng-deep .dx-fa-button .dx-fa-button-icon .dx-icon {
+  font-weight: 600;
+}
+
+
+/* ===================================
+    4.List & List items(cards) Design
+======================================*/
+
+::ng-deep .team-container .dx-list-item {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  padding: 5px;
+  margin-left: 17px;
+  border-radius: 14px;
+  border: none;
+  margin-bottom: 5px;
+  background-color: #f5f5f5;
+}
+
+::ng-deep .team-container .dx-list-item:hover {
+  background-color: var(--primary-color-20);
+  border: 1px solid #ccc;
+  transform: scale(1.005);
+  transition: 0.3s ease-in-out;
+}
+
+.team-container .dx-list-item span {
+  margin-right: 10px;
+}
+
+::ng-deep .team-container .dx-list-next-button .dx-button {
+  background-color: var(--primary-color-20);
+  border: 1px solid #ccc;
+  margin-top: 1rem;
+  border-radius: 14px;
+  margin-left: -10%;
+  font-weight: 500;
+  transition: 0.4s;
+}
+
+::ng-deep .team-container .dx-list-next-button .dx-button:hover {
+  transform: scale(0.95);
+}
+
+::ng-deep .team-container .dx-list .dx-empty-message {
+  border-top: none;
+}
+
+/* ===================================
+    5.Pop ups Design
+======================================*/
+
+::ng-deep .dx-popup-wrapper > .dx-overlay-content {
+  border-radius: 14px;
+}
+
+::ng-deep .dx-popup-title.dx-toolbar .dx-toolbar-items-container {
+  margin-top: 5px;
+}
+
+::ng-deep .dx-popup-title.dx-toolbar .dx-closebutton.dx-state-hover {
+  transform: rotate(360deg);
+  transition: 0.5s ease;
+}
+
+::ng-deep .dx-popup-title.dx-toolbar .dx-closebutton {
+  border-radius: 50%;
+  padding: 3px;
+}
+
+::ng-deep .dx-toolbar-button .dx-button .dx-icon {
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--primary-color-icon);
+}
+
+::ng-deep .dx-toolbar-label > div {
+  font-weight: 700;
+  width: 250px;
+  font-size: 1.5rem;  
+}
+
+::ng-deep .dx-popup-title.dx-toolbar {
+  border: none;
+}
+
+::ng-deep .dx-texteditor.dx-editor-outlined {
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 40%;
+  height: 40px;
+} 
+
+.buttons-container {
+  display: flex;
+  gap: 5px;
+  justify-content: end;
+  margin-top: 265px;
+}
+
+::ng-deep  .dx-overlay-content{
+  left: -20px !important;
+  top: -20px !important;
+}
+
+::ng-deep .buttons-container .dx-button-mode-contained {
+  background-color: var(--primary-color-20);
+  border-color: #ccc;
+  color: #000;
+  font-weight: 500;
+  border-radius: 14px;
+  padding: 1px 0;
+  min-width: 100px;
+  transition: 0.4s ease;
+}
+
+::ng-deep .buttons-container .dx-button-mode-contained.dx-state-hover {
+  transform: scale(0.95);
+}
+
+.person-container .edit-delete {
+  align-self: center;
+}
+
+::ng-deep .person-container .dx-button-mode-text {
+  padding: 3px;
+  border-radius: 50%;
+}
+
+::ng-deep .person-container .dx-button-mode-text.dx-state-hover {
+  transition: 0.4s;
+}
+
+::ng-deep .person-container .dx-button-mode-text .dx-icon {
+  color: var(--primary-color-icon);
+}
+
+::ng-deep .dx-popup-content {
+  padding-top: 35px;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group label {
+  width: 120px;
+  font-weight: 500;
+}
+
+
+/* ===================================
+    6.Dark Mode Design
+======================================*/
+
+:host-context(.dark) .team-container .title {
+  color: var(--title);
+}
+
+/*     title     */
+
+:host-context(.dark) .loading-title {
+  color: var(--subtitle);
+}
+
+/*     search box     */
+
+:host-context(.dark) .team-container .search-box {
+  border-color: var(--border-color-dark);
+  opacity: 0.95;
+}
+
+:host-context(.dark) .team-container .search-box:active {
+  border-color: var(--subtitle)
+}
+
+/*     list    */
+
+:host-context(.dark) ::ng-deep .team-container .dx-list-item {
+  background-color: var(--hover-color-dark);
+  color: var(--subtitle);
+}
+
+:host-context(.dark)::ng-deep .team-container .dx-list-item:hover {
+  background-color: #2c2c31;
+  border: 1px solid var(--subtitle);
+}
+
+:host-context(.dark) ::ng-deep .person-container .dx-button-mode-text.dx-state-hover {
+  background-color: var(--subtitle);
+  opacity: 0.8;
+  transition: 0.4s;
+}
+
+:host-context(.dark) ::ng-deep .team-container .dx-list .dx-empty-message {
+  color: var(--subtitle);
+}
+
+:host-context(.dark) ::ng-deep .team-container .dx-list-next-button .dx-button {
+  background-color: transparent;
+  border: 1px solid var(--subtitle);
+  color: var(--subtitle);
+  box-shadow: 0.1px 0.1px 3px var(--subtitle);
+}
+
+:host-context(.dark) ::ng-deep .team-container .dx-list-next-button .dx-button:hover {
+  border: 1px solid var(--title);
+  color: var(--title);
+}
+
+/*     image of person card     */
+
+:host-context(.dark) .team-container img {
+  opacity: 0.9;
+  transition: 0.4s;
+}
+
+:host-context(.dark) .team-container img:hover {
+  opacity: 1;
+}

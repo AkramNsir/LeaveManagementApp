@@ -1,0 +1,327 @@
+<h1 class="leave-title">My Absences</h1>
+<p *ngIf="isLoading" class="loading-title">Loading...</p>
+<div *ngIf="!isLoading" style="display: flex; justify-content: end; margin-bottom: 25px;">
+  <dx-button
+  stylingMode="text"
+  text="Add new absence"
+  icon="add"
+  class="addButton"
+  (onClick)="openAddLeavePopup()">
+</dx-button></div>
+
+<dx-data-grid
+  *ngIf="!isLoading"
+  class="custom-data-grid"
+  [dataSource]="absences"
+  keyExpr="Id"  
+  [showBorders]="false"
+  [focusedRowEnabled]="true"
+  [focusedRowIndex]="0"
+  (onRowRemoving)="onRowRemoving($event)"
+  (onCellPrepared)="onCellPrepared($event)"
+  (onEditingStart)="onEditingStart($event)"
+  (onRowPrepared)="onRowPrepared($event)">
+
+  <dxo-paging [pageSize]="5"></dxo-paging>
+  <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[5, 10, 15]" [showInfo]="true"></dxo-pager>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxi-column dataField="Type" caption="Type">
+    <dxo-lookup
+    [dataSource]="leaveTypeOptions"
+    displayExpr="Description"
+    valueExpr="Value"
+  ></dxo-lookup>
+  </dxi-column>
+  <dxi-column dataField="IsApproved" caption="Is Approved"  [allowEditing]="false">
+    <dxo-lookup
+    [dataSource]="isApprovedOptions"
+    displayExpr="Description"
+    valueExpr="Value"
+  ></dxo-lookup>
+  </dxi-column>
+  <dxi-column dataField="ProcessState" caption="Process State" [allowEditing]="false">
+    <dxo-lookup
+    [dataSource]="processStatesOptions"
+    displayExpr="Description"
+    valueExpr="Value"
+  ></dxo-lookup>
+  </dxi-column>
+  <dxi-column dataField="StartDate" caption="From" dataType="date" [width]="120"></dxi-column>
+  <dxi-column dataField="EndDate" caption="To" dataType="date" [width]="120"></dxi-column>
+  <dxi-column dataField="Days" caption="Duration (days)" alignment="left" [width]="150" [calculateDisplayValue]="getDurationDisplayValue" [allowEditing]="false"></dxi-column>
+  <dxi-column dataField="ApplicantDate" caption="Request Date" dataType="date" [width]="150" [allowEditing]="false"></dxi-column>
+  <dxi-column dataField="IdRefPersonSubstitution" caption="Substitute">
+    <dxo-lookup
+      [dataSource]="substitutes"
+      displayExpr="FullName"
+      valueExpr="Id"
+    ></dxo-lookup>
+  </dxi-column>
+  <!-- [cellTemplate]="substituteCellTemplate" -->
+  <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+
+  <dxo-editing
+  mode="popup"
+  [allowUpdating]="true"
+  [allowDeleting]="true"
+  [useIcons]="true"
+  >
+  </dxo-editing> 
+
+</dx-data-grid>
+
+<dx-popup
+    [visible]="popupAddVisible"
+    [showTitle]="true"
+    title="Add new Absence"
+    [dragEnabled]="true"
+    [hideOnOutsideClick]="true"
+    (onHiding)="closeAddLeavePopup()">
+    <div style="margin: auto;" *dxTemplate="let data of 'content'">
+      <div class="add-popUp">
+
+
+        <div style="display: flex;">
+
+        <div style="width: 100%;" >
+
+          <div class="form-group">
+            <label for="person">Person : </label>
+            <dx-text-box
+            id="person"
+            [value]= "currentUser[0].FullName"
+            [readOnly]="true">
+  
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Person is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-text-box>
+          </div>
+  
+          <div class="form-group">
+            <label for="startDate">Start Date : </label>
+            <dx-date-box
+              id="startDate"
+              [(value)]="newLeave.StartDate"
+              displayFormat="MM-dd-yyyy"
+              placeholder="Select start date"
+              [disabledDates]="disabledDates"
+              [min]="minStartDate"
+              (onValueChanged)="onStartDateChanged($event)">
+  
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Start Date is required"></dxi-validation-rule>
+              </dx-validator>
+  
+            </dx-date-box>
+          </div>
+  
+          <div class="form-group">
+            <label for="endDate">End Date : </label>
+            <dx-date-box
+              id="endDate"
+              [(value)]="newLeave.EndDate"
+              displayFormat="MM-dd-yyyy"
+              placeholder="Select end date"
+              [disabledDates]="disabledDates"
+              [min]="newLeave.StartDate"
+              (onValueChanged)="onEndDateChanged($event)">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="End Date is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-date-box>
+          </div>
+          <div *ngIf="isSameDayAdd()" class="form-group">
+            <label for="dayType">Day Type : </label>
+            <dx-select-box
+              id="dayType"
+              [dataSource]="dayTypeOptions"
+              displayExpr="name"
+              valueExpr="id"
+              [(value)]="newLeave.DayType"
+              (onValueChanged)="updateDurationBasedOnDayType()">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Day Type is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-select-box>
+          </div>
+        </div>
+        <div style="width: 100%;">
+          <div class="form-group">
+            <label for="duration">Duration (days) : </label>
+            <dx-number-box
+              id="duration"
+              [readOnly]="true"
+              [(value)]="newLeave.Duration">  
+            </dx-number-box>
+          </div>  
+          <div class="form-group">
+            <label for="type">Leave Type : </label>
+            <dx-select-box
+              id="type"
+              [dataSource]="leaveTypeOptions"
+              displayExpr="Description"
+              valueExpr="Value"
+              [(value)]="newLeave.Type"
+              [searchEnabled]="true"
+              [dropDownOptions]="{ maxHeight: '200px'}">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Leave Type is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-select-box>
+          </div>
+          <div class="form-group">
+            <label for="substitute">Substitute : </label>
+            <dx-select-box
+              id="substitute"
+              [dataSource]="substitutes"
+              displayExpr="FullName"
+              valueExpr="Id"
+              [(value)]="newLeave.Substitute"
+              [searchEnabled]="true"
+              [dropDownOptions]="{ maxHeight: '200px'}">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Substitute is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-select-box>
+          </div> 
+        </div>
+      </div>
+
+        <div [ngClass]="{'buttons-container': true, 'buttons-container-adjusted': isSameDayAdd()}">
+          <dx-button text="Add" (onClick)="add()"></dx-button>
+          <dx-button text="Cancel" (onClick)="closeAddLeavePopup()"></dx-button>
+        </div>      
+      </div>
+    </div>
+</dx-popup>
+
+
+
+<dx-popup
+    [visible]="popupEditVisible"
+    [showTitle]="true"
+    title="Edit Absence"
+    [dragEnabled]="true"
+    [hideOnOutsideClick]="true"
+    (onHiding)="closeEditLeavePopup()">
+    <div style="margin: auto;" *dxTemplate="let data of 'content'">
+      <div class="add-popUp">
+
+
+        <div style="display: flex;">
+
+        <div style="width: 100%; margin-right: 20px;" >
+
+          <div class="form-group">
+            <label for="person">Person : </label>
+            <dx-text-box
+            id="person"
+            [value]= "currentUser[0].FullName"
+            [readOnly]="true">
+  
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Person is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-text-box>
+          </div>
+  
+          <div class="form-group">
+            <label for="startDate">Start Date : </label>
+            <dx-date-box
+              id="startDate"
+              [(value)]="currentLeave.StartDate"
+              displayFormat="MM-dd-yyyy"
+              placeholder="Select start date"
+              [disabledDates]="disabledDates"
+              [min]="minStartDate"
+              (onValueChanged)="onStartDateChangedEdit($event)">
+  
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Start Date is required"></dxi-validation-rule>
+              </dx-validator>
+  
+            </dx-date-box>
+          </div>
+  
+          <div class="form-group">
+            <label for="endDate">End Date : </label>
+            <dx-date-box
+              id="endDate"
+              [(value)]="currentLeave.EndDate"
+              displayFormat="MM-dd-yyyy"
+              placeholder="Select end date"
+              [disabledDates]="disabledDates"
+              [min]="currentLeave.StartDate"
+              (onValueChanged)="onEndDateChangedEdit($event)">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="End Date is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-date-box>
+          </div>
+          <div *ngIf="isSameDayEdit()" class="form-group">
+            <label for="dayType">Day Type : </label>
+            <dx-select-box
+              id="dayType"
+              [dataSource]="dayTypeOptions"
+              displayExpr="name"
+              valueExpr="id"
+              [(value)]="currentLeave.DayType"
+              (onValueChanged)="updateDurationBasedOnDayTypeEdit()">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Day Type is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-select-box>
+          </div>
+        </div>
+        <div style="width: 100%;">
+          <div class="form-group">
+            <label for="duration">Duration (days) : </label>
+            <dx-number-box
+              id="duration"
+              [readOnly]="true"
+              [(value)]="currentLeave.Duration">  
+            </dx-number-box>
+          </div>  
+          <div class="form-group">
+            <label for="type">Leave Type : </label>
+            <dx-select-box
+              id="type"
+              [dataSource]="leaveTypeOptions"
+              displayExpr="Description"
+              valueExpr="Value"
+              [(value)]="currentLeave.Type"
+              [searchEnabled]="true"
+              [dropDownOptions]="{ maxHeight: '200px'}">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Leave Type is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-select-box>
+          </div>
+          <div class="form-group">
+            <label for="substitute">Substitute : </label>
+            <dx-select-box
+              id="substitute"
+              [dataSource]="substitutes"
+              displayExpr="FullName"
+              valueExpr="Id"
+              [(value)]="currentLeave.Substitute"
+              [searchEnabled]="true"
+              [dropDownOptions]="{ maxHeight: '200px'}">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Substitute is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-select-box>
+          </div> 
+        </div>
+      </div>
+
+        <div [ngClass]="{'buttons-container': true, 'buttons-container-adjusted': isSameDayEdit()}">
+          <dx-button text="Save" (onClick)="edit()"></dx-button>
+          <dx-button text="Cancel" (onClick)="closeEditLeavePopup()"></dx-button>
+        </div>      
+      </div>
+    </div>
+</dx-popup>
+

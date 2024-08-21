@@ -1,0 +1,60 @@
+<div *ngIf="isLoading">
+  <p class="loading-title">Loading...</p>
+</div>
+
+<div *ngIf="!isLoading" class="doughnut-container">
+  <dx-pie-chart
+  id="pie"
+  type="doughnut"
+  palette="Soft Pastel"
+  [dataSource]="absencesByType"
+  [size]="{ width: 500, height: 400 }"
+  centerTemplate="centerTemplate"
+  [innerRadius]="0.65">
+
+  <dxi-series argumentField="type">
+    <dxo-label [visible]="true">
+      <dxo-connector [visible]="true"></dxo-connector>
+    </dxo-label>
+  </dxi-series>
+  <dxo-export [enabled]="true"></dxo-export>
+  <dxo-title
+    [text]="'Your Absences Distribution'"
+    [font]="{ weight: 900, size: 30 }" 
+  ></dxo-title>
+  <dxo-legend
+    [margin]="{ top:15}"
+    horizontalAlignment="right"
+    verticalAlignment="top"
+  ></dxo-legend>
+  <dxo-tooltip
+    [enabled]="true"
+  >
+  </dxo-tooltip>
+
+  
+
+  <svg *dxTemplate="let pieChart of 'centerTemplate'" class="center-svg">
+    <circle
+      cx="100"
+      cy="100"
+      [attr.r]="pieChart.getInnerRadius() - 6"
+      fill="#eee"
+    ></circle>
+    <text
+      text-anchor="middle"
+      style="font-size: 22px"
+      x="80"
+      y="80"
+      fill="#494949"
+    >
+      <tspan x="100"> {{ totalAbsences }} Days</tspan>
+      <!-- display: inline -->
+      <tspan x="100" dy="50px" style="font-weight: 600; font-size: 28px">Total</tspan>
+    </text>
+  </svg>
+
+
+
+</dx-pie-chart>
+</div>

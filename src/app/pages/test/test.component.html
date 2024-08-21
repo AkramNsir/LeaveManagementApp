@@ -1,0 +1,53 @@
+<div class="container" id="container" [ngClass]="{ 'active': isToggled }">
+  <div class="form-container sign-up">
+      <div style="display: flex; justify-content: start; padding-top: 10px;">
+        <dx-button (click)="removeActiveClass()" icon="sun" style="border-radius: 50%; border: 1px solid #ccc; padding: 1px;"></dx-button>
+      </div>
+      <form (ngSubmit)="login()">
+        <h1>Sign In</h1>
+        <input type="text" placeholder="Username" name="username" [disabled]="isDisabled" [(ngModel)]="username">
+        <input [type]="passwordFieldType" placeholder="Password" name="password" [disabled]="isDisabled" [(ngModel)]="password">
+        <div class="eyeIcon-container" (click)="togglePasswordVisibility()" style="display: inline-block;">   
+           <i [ngClass]="passwordFieldType === 'password' ? 'fa fa-eye eyeIcon' : 'fa fa-eye-slash eyeIcon'"></i>
+        </div>
+        <a (click)="goResetPassword()">Forget Your Password?</a>
+        <p class="errorMessage" *ngIf="errorMessage">{{ errorMessage }}</p>
+        <p class="doneMessage" *ngIf="doneMessage">{{ doneMessage }}</p>
+        <p class="message" *ngIf="isLoading">{{ message }}</p>
+        <button type="submit">Sign In</button>
+      </form>
+  </div>
+  <div class="form-container sign-in" >
+      
+      <form (submit)="login()">  
+          <h1>Sign In</h1>
+          <input type="text" placeholder="Username" name="username" [disabled]="isDisabled" [(ngModel)]="username">
+          <input [type]="passwordFieldType" placeholder="Password" name="password" [disabled]="isDisabled" [(ngModel)]="password">
+          <div class="eyeIcon-container" (click)="togglePasswordVisibility()" style="display: inline-block;">   
+             <i [ngClass]="passwordFieldType === 'password' ? 'fa fa-eye eyeIcon' : 'fa fa-eye-slash eyeIcon'"></i>
+          </div>
+          <a (click)="goResetPassword()">Forget Your Password?</a>
+          <p class="errorMessage" *ngIf="errorMessage">{{ errorMessage }}</p>
+          <p class="doneMessage" *ngIf="doneMessage">{{ doneMessage }}</p>
+          <p class="message" *ngIf="isLoading">{{ message }}</p>
+          <button type="submit">Sign In</button>
+      </form>
+  </div>
+  <div class="toggle-container">
+      <div class="toggle">
+          <div class="toggle-panel toggle-left">
+              <h1>Welcome Back!</h1>
+              <p>Enter your personal details to use all of site features</p>
+              <button class="hidden" id="login" (click)="removeActiveClass()">Sign In</button>
+          </div>
+          <div class="toggle-panel toggle-right border">
+            <div style="display: flex; align-self: end; margin-bottom: 100px;">
+              <dx-button (click)="addActiveClass()" icon="moon" style="border-radius: 50%; border: 1px solid #ccc; font-size: 1.3rem; padding: 1px;"></dx-button>
+            </div>
+              <h1>Hello, Friend!</h1>
+              <p>Register with your personal details to use all of site features</p>
+              <button class="hidden" id="register" (click)="addActiveClass()">Sign Up</button>
+          </div>
+      </div>
+  </div>
+</div>
