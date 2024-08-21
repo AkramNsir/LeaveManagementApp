@@ -30,15 +30,15 @@ This Leave Management Application is a web-based solution designed to streamline
 Here are some screenshots of the Leave Management App:
 
 ### Login Page
-![Dashboard](assets/images/screenshots/loginPage.png)
+![Dashboard](src/assets/images/screenshots/loginPage.png)
 *Form to login into the app.*
 
 ### Leave Request Form
-![Leave Request Form](assets/images/screenshots/addAbsencePage.png)
+![Leave Request Form](src/assets/images/screenshots/addAbsencePage.png)
 *Form for submitting new leave requests.*
 
 ### Calendar Overview
-![Team Overview](assets/images/screenshots/calendarPage.png)
+![Team Overview](src/assets/images/screenshots/calendarPage.png)
 *View of the team's leave schedules on a calendar.*
 
 ## Technologies Used
