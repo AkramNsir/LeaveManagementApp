@@ -7,10 +7,11 @@ A robust and intuitive web application designed for managing employee leave requ
 > Table of Contents
 1. Overview
 2. Features
-3. Technologies Used
-4. Installation
-5. License
-6. Contact
+3. ScreenShots
+4. Technologies Used
+5. Installation
+6. License
+7. Contact
 
 ***
 
@@ -24,6 +25,21 @@ This Leave Management Application is a web-based solution designed to streamline
 * Team Overview: A section to view team members'.   
 * Calendar View: Visual representation of leave schedules using a dynamic calendar component.   
 * Dark Mode: Support for a dark theme for better readability in low-light environments.
+
+## ScreenShots 
+Here are some screenshots of the Leave Management App:
+
+### Login Page
+![Dashboard](assets/images/screenshots/loginPage.png)
+*Form to login into the app.*
+
+### Leave Request Form
+![Leave Request Form](assets/images/screenshots/addAbsencePage.png)
+*Form for submitting new leave requests.*
+
+### Calendar Overview
+![Team Overview](assets/images/screenshots/calendarPage.png)
+*View of the team's leave schedules on a calendar.*
 
 ## Technologies Used
 <div style="display: flex; gap: 20px; flex-wrap: wrap;">
