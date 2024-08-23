@@ -30,7 +30,7 @@ This Leave Management Application is a web-based solution designed to streamline
 Here are some screenshots of the Leave Management App:
 
 ### Login Page
-![Dashboard](src/assets/images/screenshots/loginPage.png)
+![Login Page](src/assets/images/screenshots/loginPage.png)
 
 ### Leave Request Form
 ![Leave Request Form](src/assets/images/screenshots/addAbsencePage.png)
