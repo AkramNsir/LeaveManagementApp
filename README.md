@@ -95,4 +95,4 @@ For any inquiries or issues, feel free to reach out:
 
 Name: Mohamed Akram Nsir    
 Email: akramnsir5@gamil.com    
-GitHub: AkramNsir
+GitHub: https://github.com/AkramNsir
