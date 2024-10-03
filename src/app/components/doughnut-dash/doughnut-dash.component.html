@@ -10,7 +10,7 @@
   [dataSource]="absencesByType"
   [size]="{ width: 500, height: 400 }"
   centerTemplate="centerTemplate"
-  [innerRadius]="0.65">
+  [innerRadius]="0.75">
 
   <dxi-series argumentField="type">
     <dxo-label [visible]="true">
@@ -43,14 +43,14 @@
     ></circle>
     <text
       text-anchor="middle"
-      style="font-size: 22px"
+      style="font-size: 18px"
       x="80"
       y="80"
       fill="#494949"
     >
       <tspan x="100"> {{ totalAbsences }} Days</tspan>
       <!-- display: inline -->
-      <tspan x="100" dy="50px" style="font-weight: 600; font-size: 28px">Total</tspan>
+      <tspan x="100" dy="50px" style="font-weight: 600; font-size: 24px">Total</tspan>
     </text>
   </svg>
 
